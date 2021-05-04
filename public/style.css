@@ -1,0 +1,82 @@
+:root {
+    --main-color:rgba(172, 87, 30, 0.3);
+    --light: rgb(252, 252, 231);
+    --dark-transparent:#00000070;
+    --pawn-size: 100px;  
+    --highlight: rgb(12, 148, 12);
+    --spacing:8px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+    background-image:url('https://www.toptal.com/designers/subtlepatterns/patterns/pool_table.png');
+    background-repeat: repeat;
+}
+
+main {
+    display: grid;
+    grid-template-rows: repeat(7, var(--pawn-size));
+    grid-template-columns: repeat(7, var(--pawn-size));
+    padding: calc(var(--spacing) * 4);
+    border-radius: calc(var(--pawn-size) * 7);
+    box-shadow: -5px 0 20px -12px black;
+    background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/retina_wood.png');
+}
+
+main a {
+    border-radius: var(--pawn-size);
+    background-color: var(--pawn-color, transparent);
+}
+
+a:hover {
+    filter: brightness(150%);
+}
+
+.empty {
+    --pawn-color: var(--dark-transparent);
+    box-shadow: 5px 0 5px 5px inset var(--dark-transparent);
+}
+
+.pawn {
+    --pawn-color: var(--main-color);
+    background: radial-gradient(circle at calc(var(--pawn-size) / 3) calc(var(--pawn-size) / 2), var(--pawn-color), rgb(32, 1, 1));
+}
+
+.selected:not(.empty) {
+    --pawn-color: var(--highlight);
+}
+
+.new-game {
+    background-color: var(--light);
+    color: var(--highlight);
+    padding: var(--spacing);
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    padding:var(--spacing);
+    width: 100%;
+}
+.error {
+    color:var(--light);
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+footer {
+    align-self: flex-end;
+    color:var(--light);
+    margin: var(--spacing);
+}

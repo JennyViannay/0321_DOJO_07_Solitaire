@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Solitaire</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="info">
+			<div class="error">{{error}}</div>
+			<a class="new-game" href="?reset=1">New game</a>
+		</div>
+		<main>
+			{% for x in 0..6 %}
+				{% for y in 0..6 %}
+					{% if board[y][x] != constant('App\\Game::INVALID') %}
+						<a class="{{ from is not null and from[0]==x and from[1]==y ? 'selected' }} {{ board[y][x] }}" href="?coord={{x}},{{y}}"></a>
+					{% else %}
+						<a></a>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</main>
+		<footer class="footer">Wild code school - Dojo solitaire</footer>
+	</body>
+</html>
